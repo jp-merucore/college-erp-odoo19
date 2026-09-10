@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- ==========================================================
+    <!-- 
          Common Portal Page Wrapper
-    =========================================================== -->
+     -->
 
     <template id="portal_page"
               name="Portal Page">
