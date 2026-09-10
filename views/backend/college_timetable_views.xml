@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- ==========================================
+    <!-- 
                     LIST VIEW
-    =========================================== -->
+  -->
 
     <record id="view_college_timetable_list" model="ir.ui.view">
         <field name="name">college.timetable.list</field>
@@ -38,9 +38,9 @@
     </record>
 
 
-    <!-- ==========================================
+    <!-- 
                     FORM VIEW
-    =========================================== -->
+-->
 
     <record id="view_college_timetable_form" model="ir.ui.view">
         <field name="name">college.timetable.form</field>
@@ -128,9 +128,9 @@
     </record>
 
 
-    <!-- ==========================================
+    <!-- 
                     SEARCH VIEW
-    =========================================== -->
+-->
 
     <record id="view_college_timetable_search" model="ir.ui.view">
         <field name="name">college.timetable.search</field>
@@ -157,9 +157,9 @@
     </record>
 
 
-    <!-- ==========================================
+    <!-- 
                     ACTION
-    =========================================== -->
+    -->
 
     <record id="action_college_timetable"
             model="ir.actions.act_window">
