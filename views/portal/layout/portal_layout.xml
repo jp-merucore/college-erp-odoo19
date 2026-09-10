@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- ==========================================================
-         College ERP - Shared Portal Layout
-         Every portal page will use this template.
-    =========================================================== -->
+
 
     <template id="college_portal_layout"
               name="College Portal Layout">
