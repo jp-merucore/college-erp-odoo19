@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- ==========================================
+    <!-- 
                     LIST VIEW
-    =========================================== -->
+-->
 
     <record id="view_college_teacher_list" model="ir.ui.view">
         <field name="name">college.teacher.list</field>
@@ -32,9 +32,9 @@
     </record>
 
 
-    <!-- ==========================================
+    <!-- 
                     FORM VIEW
-    =========================================== -->
+-->
 
     <record id="view_college_teacher_form" model="ir.ui.view">
         <field name="name">college.teacher.form</field>
@@ -144,9 +144,9 @@
     </record>
 
 
-    <!-- ==========================================
+    <!--
                     SEARCH VIEW
-    =========================================== -->
+    -->
 
     <record id="view_college_teacher_search" model="ir.ui.view">
         <field name="name">college.teacher.search</field>
@@ -174,9 +174,9 @@
     </record>
 
 
-    <!-- ==========================================
+    <!-- 
                     ACTION
-    =========================================== -->
+  -->
 
     <record id="action_college_teacher"
             model="ir.actions.act_window">
