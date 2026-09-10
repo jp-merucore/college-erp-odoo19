@@ -111,9 +111,7 @@ class CollegeStudent(models.Model):
         default=lambda self: self.env.company.currency_id
     )
 
-    # Monetary field is used for money/amount
-    # currency_id automatically takes the current company currency (like INR/USD) :-$.
-    # total_fee is auto-calculated by _compute_total_fee and displayed using that currency symbol:-$5000.
+
 
     state = fields.Selection(
         [("draft", "Draft"), ("active", "Active"), ("blocked", "Blocked"), ("alumni", "Alumni")],
@@ -136,8 +134,7 @@ class CollegeStudent(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            # vals return key value pair.  val.get("student_code") value of student_code check, if value is not then assign New using _("New")
-            # when value is not get then they asign New and then condition become New=New then generate student code below.
+          
             if vals.get("student_code", _("New")) == _("New"):
                 vals["student_code"] = self.env["ir.sequence"].next_by_code("college.student") or _("New")
         return super().create(vals_list)
@@ -159,7 +156,7 @@ class CollegeStudent(models.Model):
             else:
                 rec.age = 0
 
-    # relativedelta(today, rec.birth_date) means calculate difference between today and birthdate in month, year and days
+   
 
     @api.constrains("email")
     def _check_email(self):
@@ -175,11 +172,6 @@ class CollegeStudent(models.Model):
                     lambda f: f.state != "cancel"
                 ).mapped("amount")
             )
-
-    # @api.constrains use for validation means value check before saving to database
-    # @api.depend when value depend on another field
-    # @api.model_create_multi when we need to overriding create method and need to create multiple records at one time
-    # @api.create when we need to overriding create method
 
     def action_activate(self):
         for student in self:
@@ -263,9 +255,7 @@ class CollegeStudent(models.Model):
             "domain": [("student_id", "=", self.id)],
         }
 
-    # when we change department_id then course_ids will be empty and only show courses related to that department in course_ids field.
-    # for example user select first it department course but change department to mechanical then course automatically empty.
-    # Show only courses whose department_id is equal to selected department.
+ 
 
     def action_create_portal_user(self):
         self.ensure_one()
