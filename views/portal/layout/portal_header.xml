@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- ==========================================================
+    <!-- 
          College ERP - Portal Header
-    =========================================================== -->
+     -->
 
     <template id="portal_header"
               name="Portal Header">
