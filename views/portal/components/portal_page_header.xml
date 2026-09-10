@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- ==========================================================
+    <!-- 
          Reusable Portal Page Header
-    =========================================================== -->
+    -->
 
     <template id="portal_page_header"
               name="Portal Page Header">
