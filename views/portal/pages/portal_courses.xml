@@ -7,9 +7,6 @@
 
             <div class="container-fluid">
 
-                <!-- ==========================================
-                 Reusable Page Header
-                ========================================== -->
 
                 <t t-set="page_title"
                    t-value="'My Courses'"/>
@@ -26,9 +23,9 @@
                 <t t-call="college_erp_ready.portal_page_header"/>
 
 
-                <!-- ========================= -->
+                
                 <!-- Statistics -->
-                <!-- ========================= -->
+               
 
                 <div class="row mb-4">
 
@@ -122,9 +119,9 @@
 
                 </div>
 
-                <!-- ========================= -->
+          
                 <!-- Course Cards -->
-                <!-- ========================= -->
+         
 
                 <div class="row">
 
