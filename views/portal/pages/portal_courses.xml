@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="portal_courses">
+
+        <t t-call="college_erp_ready.college_portal_layout">
+
+            <div class="container-fluid">
+
+                <!-- ==========================================
+                 Reusable Page Header
+                ========================================== -->
+
+                <t t-set="page_title"
+                   t-value="'My Courses'"/>
+
+                <t t-set="page_subtitle"
+                   t-value="'Courses assigned to you'"/>
+
+                <t t-set="page_icon"
+                   t-value="'fa fa-book text-primary me-2'"/>
+
+                <t t-set="page_total"
+                   t-value="total_courses"/>
+
+                <t t-call="college_erp_ready.portal_page_header"/>
+
+
+                <!-- ========================= -->
+                <!-- Statistics -->
+                <!-- ========================= -->
+
+                <div class="row mb-4">
+
+                    <div class="col-lg-3 col-md-6 mb-3">
+
+                        <div class="card shadow-sm border-0 text-center h-100">
+
+                            <div class="card-body">
+
+                                <i class="fa fa-book fa-2x text-primary mb-3"/>
+
+                                <h3>
+
+                                    <t t-esc="total_courses"/>
+
+                                </h3>
+
+                                <strong>Total Courses</strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 mb-3">
+
+                        <div class="card shadow-sm border-0 text-center h-100">
+
+                            <div class="card-body">
+
+                                <i class="fa fa-play-circle fa-2x text-success mb-3"/>
+
+                                <h3>
+
+                                    <t t-esc="running_courses"/>
+
+                                </h3>
+
+                                <strong>Running</strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 mb-3">
+
+                        <div class="card shadow-sm border-0 text-center h-100">
+
+                            <div class="card-body">
+
+                                <i class="fa fa-check-circle fa-2x text-info mb-3"/>
+
+                                <h3>
+
+                                    <t t-esc="completed_courses"/>
+
+                                </h3>
+
+                                <strong>Completed</strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 mb-3">
+
+                        <div class="card shadow-sm border-0 text-center h-100">
+
+                            <div class="card-body">
+
+                                <i class="fa fa-pencil-square fa-2x text-warning mb-3"/>
+
+                                <h3>
+
+                                    <t t-esc="draft_courses"/>
+
+                                </h3>
+
+                                <strong>Draft</strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ========================= -->
+                <!-- Course Cards -->
+                <!-- ========================= -->
+
+                <div class="row">
+
+                    <t t-if="courses">
+
+                        <t t-foreach="courses" t-as="course">
+
+                            <div class="col-lg-6 mb-4">
+
+                                <div class="card shadow border-0 h-100">
+
+                                    <div class="card-header bg-white">
+
+                                        <div class="d-flex justify-content-between align-items-center">
+
+                                            <div>
+
+                                                <h4 class="mb-1 text-primary">
+
+                                                    <t t-esc="course.name"/>
+
+                                                </h4>
+
+                                                <small class="text-muted">
+
+                                                    <t t-esc="course.course_code"/>
+
+                                                </small>
+
+                                            </div>
+
+                                            <span t-attf-class="badge
+                                                #{'bg-success' if course.state=='running'
+                                                else 'bg-primary' if course.state=='completed'
+                                                else 'bg-warning' if course.state=='draft'
+                                                else 'bg-danger'}">
+
+                                                <t t-esc="course.state.title()"/>
+
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="card-body">
+
+                                        <div class="row">
+
+                                            <div class="col-6 mb-3">
+
+                                                <strong>Department</strong>
+                                                <br/>
+
+                                                <span t-esc="course.department_id.name"/>
+
+                                            </div>
+
+                                            <div class="col-6 mb-3">
+
+                                                <strong>Course Fee</strong>
+                                                <br/>
+
+                                                ₹
+                                                <t t-esc="course.fees"/>
+
+                                            </div>
+
+                                            <div class="col-6 mb-3">
+
+                                                <strong>Start Date</strong>
+                                                <br/>
+
+                                                <span t-field="course.start_date"/>
+
+                                            </div>
+
+                                            <div class="col-6 mb-3">
+
+                                                <strong>End Date</strong>
+                                                <br/>
+
+                                                <span t-field="course.end_date"/>
+
+                                            </div>
+
+                                        </div>
+
+                                        <hr/>
+
+                                        <strong>Description</strong>
+
+                                        <p class="text-muted mt-2">
+
+                                            <t t-esc="course.description or 'No description available.'"/>
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </t>
+
+                    </t>
+
+                    <t t-else="">
+
+                        <div class="col-12">
+
+                            <div class="alert alert-info">
+
+                                No courses assigned.
+
+                            </div>
+
+                        </div>
+
+                    </t>
+
+                </div>
+
+            </div>
+
+        </t>
+
+    </template>
+
+</odoo>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_college_student" model="ir.sequence">
+        <field name="name">College Student Code</field>
+        <field name="code">college.student</field>
+        <field name="prefix">STU/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_college_course" model="ir.sequence">
+        <field name="name">College Course Code</field>
+        <field name="code">college.course</field>
+        <field name="prefix">CRS/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_college_department" model="ir.sequence">
+        <field name="name">College Department Code</field>
+        <field name="code">college.department</field>
+        <field name="prefix">DEP/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_college_fee" model="ir.sequence">
+        <field name="name">College Fee</field>
+        <field name="code">college.fee</field>
+        <field name="prefix">FEE/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_college_admission" model="ir.sequence">
+        <field name="name">College Admission</field>
+        <field name="code">college.admission</field>
+        <field name="prefix">ADM/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_college_attendance" model="ir.sequence">
+        <field name="name">College Attendance</field>
+        <field name="code">college.attendance</field>
+        <field name="prefix">ATT/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_college_exam"
+            model="ir.sequence">
+
+        <field name="name">College Exam</field>
+        <field name="code">college.exam</field>
+        <field name="prefix">EXM/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+
+    </record>
+
+</odoo>

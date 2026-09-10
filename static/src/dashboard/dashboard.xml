@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+<t t-name="college_erp_ready.CollegeDashboard">
+
+<div class="container mt-4">
+
+    <div class="row">
+
+        <div class="col-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Total Students</h4>
+                    <h2>
+                        <t t-esc="state.students"/>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Total Admissions</h4>
+                    <h2>
+                        <t t-esc="state.admissions"/>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Total Departments</h4>
+                    <h2>
+                        <t t-esc="state.departments"/>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Total Courses</h4>
+                    <h2>
+                        <t t-esc="state.courses"/>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Total Fees</h4>
+                    <h2>
+                        <t t-esc="state.fees"/>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Paid Fees</h4>
+                    <h2>
+                        <t t-esc="state.paid_fees"/>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Pending Fees</h4>
+                    <h2>
+                        <t t-esc="state.pending_fees"/>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</t>
+
+</templates>

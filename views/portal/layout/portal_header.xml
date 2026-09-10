@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ==========================================================
+         College ERP - Portal Header
+    =========================================================== -->
+
+    <template id="portal_header"
+              name="Portal Header">
+
+        <header class="college_header">
+
+            <!-- Left -->
+
+            <div class="college_header_left">
+
+                <button type="button"
+                        class="college_menu_btn">
+
+                    <i class="fa fa-bars"/>
+
+                </button>
+
+                <h4 class="m-0">
+
+                    Student Portal
+
+                </h4>
+
+            </div>
+
+            <!-- Right -->
+
+            <div class="college_header_right">
+
+                <!-- Search -->
+
+                <div class="college_search">
+
+                    <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Search..."/>
+
+                </div>
+
+                <!-- Notification -->
+
+                <a href="#"
+                   class="college_notification">
+
+                    <i class="fa fa-bell"/>
+
+                </a>
+
+                <!-- Student -->
+
+                <div class="college_user">
+
+                    <t t-if="student.image_1920">
+
+
+                        <img t-att-src="image_data_uri(student.image_1920)"
+                             class="college_user_image"
+                             style=" border:1px solid black"
+                        />
+
+
+                    </t>
+
+                    <t t-else="">
+
+                        <img src="/college_erp_ready/static/src/img/default_student.png"
+                             class="college_user_image"
+                             style=" border:1px solid black"
+                        />
+
+                    </t>
+
+                    <div>
+
+                        <strong>
+
+                            <t t-esc="student.name"/>
+
+                        </strong>
+
+                        <br/>
+
+                        <small class="text-muted">
+
+                            Student
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+    </template>
+
+</odoo>

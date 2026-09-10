@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_student_dashboard"
+              name="Student Dashboard">
+        <t t-call="college_erp_ready.college_portal_layout">
+            <div class="container mt-4">
+                <!-- ===================================================== -->
+                <!-- Professional Student Header -->
+                <!-- ===================================================== -->
+                <div class="card border-0 shadow-lg mb-5"
+                     style="
+                            background: linear-gradient(135deg,#2563eb,#1d4ed8);
+                            color:white;
+                         ">
+                    <div class="card-body p-4">
+                        <div class="row align-items-center">
+                            <!-- ================= Left ================= -->
+                            <div class="col-lg-8">
+                                <h2 class="fw-bold mb-3">
+                                    Welcome,
+
+                                    <t t-esc="student.name"/>
+                                </h2>
+                                <p class="mb-2">
+                                    <i class="fa fa-id-card me-2"/>
+                                    <strong>Student Code :</strong>
+                                    <t t-esc="student.student_code"/>
+                                </p>
+                                <p class="mb-2">
+                                    <i class="fa fa-building me-2"/>
+                                    <strong>Department :</strong>
+                                    <t t-esc="student.department_id.name"/>
+                                </p>
+                                <!-- Status -->
+                                <p class="mb-0">
+                                    <strong>Status :</strong>
+                                    <t t-if="student.state == 'active'">
+                                        <span class="badge bg-success ms-2">
+                                            Active
+                                        </span>
+                                    </t>
+                                    <t t-if="student.state == 'blocked'">
+                                        <span class="badge bg-danger ms-2">
+                                            Blocked
+                                        </span>
+                                    </t>
+                                    <t t-if="student.state == 'alumni'">
+                                        <span class="badge bg-primary ms-2">
+                                            Alumni
+                                        </span>
+                                    </t>
+                                    <t t-if="student.state == 'draft'">
+                                        <span class="badge bg-warning text-dark ms-2">
+                                            Draft
+                                        </span>
+                                    </t>
+                                </p>
+                            </div>
+                            <!-- ================= Right ================= -->
+                            <div class="col-lg-4 text-center">
+                                <t t-if="student.image_1920">
+                                    <img t-att-src="image_data_uri(student.image_1920)"
+                                         style="
+                                                width:180px;
+                                                height:180px;
+                                                border-radius:50%;
+                                                object-fit:cover;
+                                                border:5px solid white;
+                                                box-shadow:0 10px 25px rgba(0,0,0,.25);
+                                             "/>
+                                </t>
+                                <t t-else="">
+                                    <img src="/college_erp_ready/static/src/img/default_student.png"
+                                         style="
+                                                width:180px;
+                                                height:180px;
+                                                border-radius:50%;
+                                                object-fit:cover;
+                                                border:5px solid white;
+                                                box-shadow:0 10px 25px rgba(0,0,0,.25);
+                                             "/>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ===================== -->
+                <!-- Statistics -->
+                <!-- ===================== -->
+                <div class="row g-4">
+                    <!-- Courses -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card border-0 shadow h-100"
+                             style="background:#2563eb;color:white;border-radius:18px;overflow:hidden;">
+                            <div class="card-body text-center">
+                                <i class="fa fa-book fa-4x mb-3"
+                                   style="color:#0B3D91;"></i>
+                                <h5>Courses</h5>
+                                <h2 class="fw-bold">
+                                    <t t-esc="course_count"/>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Attendance -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card border-0 shadow h-100"
+                             style="background:#16a34a;color:white;border-radius:18px;overflow:hidden;">
+                            <div class="card-body text-center">
+                                <i class="fa fa-calendar-check-o fa-4x mb-3"
+                                   style="color:#065535;"></i>
+                                <h5>Attendance</h5>
+                                <h2 class="fw-bold">
+                                    <t t-esc="attendance_percent"/>%
+
+
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pending Fees -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card border-0 shadow h-100"
+                             style="background:#ea580c;color:white;border-radius:18px;overflow:hidden;">
+                            <div class="card-body text-center">
+                                <i class="fa fa-money fa-4x mb-3"
+                                   style="color:#E8841B;"></i>
+                                <h5>Pending Fees</h5>
+                                <h2 class="fw-bold">
+
+                                    ₹
+
+                                    <t t-esc="pending_fee"/>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Latest Result -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card border-0 shadow h-100"
+                             style="background:#7c3aed;color:white;border-radius:18px;overflow:hidden;">
+                            <div class="card-body text-center">
+                                <i class="fa fa-graduation-cap fa-4x mb-3"
+                                   style="color:#6A329F;"></i>
+                                <h5>Latest Result</h5>
+                                <h2 class="fw-bold">
+                                    <t t-esc="latest_result"/>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ===================== -->
+                <!-- Quick Actions -->
+                <!-- ===================== -->
+                <div class="mt-5">
+                    <h3 class="fw-bold mb-4">
+                        Quick Actions
+                    </h3>
+                    <div class="row g-4">
+                        <!-- Profile -->
+                        <div class="col-lg-4 col-md-6">
+                            <a href="/my/profile"
+                               class="text-decoration-none">
+                                <div class="card border-0 shadow h-100 text-center portal-action-card"
+
+                                     style="
+                                        border-radius:18px;
+                                        transition:.3s;
+                                     ">
+                                    <div class="card-body p-4">
+                                        <i class="fa fa-user-circle fa-4x text-primary mb-3"></i>
+                                        <h5 class="text-dark">
+                                            My Profile
+                                        </h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Attendance -->
+                        <div class="col-lg-4 col-md-6">
+                            <a href="/my/attendance"
+                               class="text-decoration-none">
+                                <div class="card border-0 shadow h-100 text-center portal-action-card"
+                                     style="
+                                        border-radius:18px;
+                                        transition:.3s;
+                                     ">
+                                    <div class="card-body p-4">
+                                        <i class="fa fa-calendar-check-o fa-4x text-success mb-3"></i>
+                                        <h5 class="text-dark">
+                                            Attendance
+                                        </h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Results -->
+                        <div class="col-lg-4 col-md-6">
+                            <a href="/my/results"
+                               class="text-decoration-none">
+                                <div class="card border-0 shadow h-100 text-center portal-action-card"
+                                     style="
+                                        border-radius:18px;
+                                        transition:.3s;
+                                     ">
+                                    <div class="card-body p-4">
+                                        <i class="fa fa-graduation-cap fa-4x text-info mb-3"></i>
+                                        <h5 class="text-dark">
+                                            Results
+                                        </h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Fees -->
+                        <div class="col-lg-6">
+                            <a href="/my/fees"
+                               class="text-decoration-none">
+                                <div class="card border-0 shadow h-100 text-center portal-action-card"
+                                     style="
+                                        border-radius:18px;
+                                        transition:.3s;
+                                     ">
+                                    <div class="card-body p-4">
+                                        <i class="fa fa-money fa-4x text-warning mb-3"></i>
+                                        <h5 class="text-dark">
+                                            My Fees
+                                        </h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Download ID -->
+                        <div class="col-lg-6">
+                            <a href="/my/idcard"
+                               class="text-decoration-none">
+                                <div class="card border-0 shadow h-100 text-center portal-action-card"
+                                     style="
+                                        border-radius:18px;
+                                        transition:.3s;
+                                     ">
+                                    <div class="card-body p-4">
+                                        <i class="fa fa-id-card fa-4x text-danger mb-3"></i>
+                                        <h5 class="text-dark">
+                                            Download ID Card
+                                        </h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+
+                    <div class="col-lg-6">
+                        <!-- ================================= -->
+                        <!-- Notice Board -->
+                        <!-- ================================= -->
+                        <div class="mt-4">
+                            <div class="card border-0 shadow h-100">
+                                <div class="card-header bg-dark text-white">
+                                    <h4 class="mb-0">
+                                        <i class="fa fa-bullhorn me-2"/>
+                                        Notice Board
+
+                                    </h4>
+                                </div>
+                                <div class="card-body">
+                                    <t t-if="notices">
+
+                                        <ul class="list-group list-group-flush">
+
+                                            <t t-foreach="notices"
+                                               t-as="notice">
+
+                                                <li class="list-group-item">
+
+                                                    <!-- Notice Title -->
+                                                    <strong>
+                                                        <t t-esc="notice.name"/>
+                                                    </strong>
+
+                                                    <br/>
+
+                                                    <!-- Date -->
+                                                    <small class="text-muted">
+                                                        <span t-field="notice.notice_date"/>
+                                                    </small>
+
+                                                    <br/>
+
+                                                    <!-- Description -->
+                                                    <div class="mt-2">
+                                                        <t t-out="notice.description"/>
+                                                    </div>
+
+                                                    <!-- Attachment -->
+                                                    <t t-if="notice.attachment">
+
+                                                        <a t-attf-href="/my/notice/download/#{notice.id}"
+                                                           class="btn btn-sm btn-primary mt-2">
+
+                                                            <i class="fa fa-download me-1"/>
+                                                            Download Attachment
+
+                                                        </a>
+
+                                                    </t>
+
+                                                </li>
+
+                                            </t>
+
+                                        </ul>
+
+                                    </t>
+
+                                    <t t-else="">
+
+                                        <div class="text-center text-muted py-4">
+
+                                            No notices available.
+
+                                        </div>
+
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ================================= -->
+                        <!-- Student Information -->
+                        <!-- ================================= -->
+                        <div class="mt-4">
+                            <div class="card border-0 shadow h-100 mt-4">
+                                <div class="card-header bg-secondary text-white">
+
+                                    <h4 class="mb-0">
+
+                                        <i class="fa fa-user me-2"/>
+
+                                        Student Information
+
+                                    </h4>
+
+                                </div>
+
+                                <div class="card-body">
+
+                                    <table class="table table-borderless mb-0">
+
+                                        <tr>
+                                            <th width="40%">Student Code</th>
+                                            <td>
+                                                <t t-esc="student.student_code"/>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>Name</th>
+                                            <td>
+                                                <t t-esc="student.name"/>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>Department</th>
+                                            <td>
+                                                <t t-esc="student.department_id.name"/>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>Admission Date</th>
+                                            <td>
+                                                <span t-field="student.admission_date"/>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>Status</th>
+                                            <td>
+
+                                                <t t-if="student.state == 'draft'">
+                                                    <span class="badge bg-warning text-dark">Draft</span>
+                                                </t>
+
+                                                <t t-if="student.state == 'active'">
+                                                    <span class="badge bg-success">Active</span>
+                                                </t>
+
+                                                <t t-if="student.state == 'blocked'">
+                                                    <span class="badge bg-danger">Blocked</span>
+                                                </t>
+
+                                                <t t-if="student.state == 'alumni'">
+                                                    <span class="badge bg-primary">Alumni</span>
+                                                </t>
+
+                                            </td>
+                                        </tr>
+
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ================================= -->
+                        <!-- Fee Summary -->
+                        <!-- ================================= -->
+                        <div class="mt-4">
+                            <div class="card border-0 shadow h-100">
+                                <div class="card-header bg-warning">
+                                    <h4 class="mb-0">
+                                        <i class="fa fa-money me-2"/>
+
+                                        Fee Summary
+
+
+                                    </h4>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <th>Total Fees</th>
+                                            <td>
+
+                                                ₹
+
+                                                <t t-esc="total_fee"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Paid</th>
+                                            <td class="text-success">
+
+                                                ₹
+
+                                                <t t-esc="paid_fee"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Pending</th>
+                                            <td class="text-danger">
+
+                                                ₹
+
+                                                <t t-esc="pending_fee"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- Progress -->
+                                    <div class="mt-3">
+                                        <div class="progress"
+                                             style="height:28px;">
+                                            <div class="progress-bar bg-success"
+
+                                                 role="progressbar"
+
+                                                 t-attf-style="width:#{fee_percentage}%;">
+                                                <t t-esc="fee_percentage"/>
+                                                %
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer text-end">
+                                    <a href="/my/fees"
+                                       class="btn btn-warning">
+
+                                        View Fee Details
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-6">
+                        <!-- ========================================== -->
+                        <!-- Recent Attendance -->
+                        <!-- ========================================== -->
+                        <div class="mt-4">
+                            <div class="card shadow border-0 h-100">
+                                <div class="card-header bg-primary text-white">
+                                    <h4 class="mb-0">
+                                        <i class="fa fa-calendar-check-o"/>
+                                        Recent Attendance
+
+                                    </h4>
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table table-hover mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Subject</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="recent_attendance"
+                                               t-as="att">
+                                                <tr>
+                                                    <td>
+                                                        <span t-field="att.attendance_date"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="att.course_id"/>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="att.status == 'present'">
+                                                            <span class="badge bg-success">
+                                                                Present
+                                                            </span>
+                                                        </t>
+                                                        <t t-if="att.status == 'absent'">
+                                                            <span class="badge bg-danger">
+                                                                Absent
+                                                            </span>
+                                                        </t>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-footer text-end">
+                                    <a href="/my/attendance"
+                                       class="btn btn-outline-primary">
+
+                                        View Full Attendance
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ======================================= -->
+                        <!-- Latest Exam Result -->
+                        <!-- ======================================= -->
+                        <div class="mt-4">
+                            <div class="card border-0 shadow h-100">
+                                <div class="card-header bg-success text-white">
+                                    <h4 class="mb-0">
+                                        <i class="fa fa-graduation-cap me-2"/>
+
+                                        Latest Exam Result
+
+
+                                    </h4>
+                                </div>
+                                <div class="card-body">
+                                    <t t-if="latest_exam">
+                                        <table class="table table-borderless">
+                                            <tr>
+                                                <th width="180">Exam</th>
+                                                <td>
+                                                    <span t-field="latest_exam.exam_id"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Marks</th>
+                                                <td>
+                                                    <span t-field="latest_exam.marks"/>
+                                                    /
+
+                                                    <span t-field="latest_exam.exam_id.total_marks"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Percentage</th>
+                                                <td>
+                                                    <span t-field="latest_exam.percentage"/>
+                                                    %
+
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Result</th>
+                                                <td>
+                                                    <t t-if="latest_exam.result == 'pass'">
+                                                        <span class="badge bg-success">
+
+                                                            PASS
+
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="latest_exam.result == 'fail'">
+                                                        <span class="badge bg-danger">
+
+                                                            FAIL
+
+                                                        </span>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </t>
+                                    <t t-else="">
+                                        <div class="alert alert-info mb-0">
+
+                                            No exam result available.
+
+                                        </div>
+                                    </t>
+                                </div>
+                                <div class="card-footer text-end">
+                                    <a href="/my/results"
+                                       class="btn btn-outline-success">
+
+                                        View All Results
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ================================= -->
+                        <!-- Upcoming Exams -->
+                        <!-- ================================= -->
+                        <div class="mt-4">
+                            <div class="card shadow border-0">
+
+                                <div class="card-header bg-primary text-white">
+
+                                    <h5 class="mb-0">
+
+                                        <i class="fa fa-calendar"/>
+
+                                        Upcoming Exams
+
+                                    </h5>
+
+                                </div>
+
+                                <div class="card-body">
+
+                                    <t t-if="upcoming_exams">
+
+                                        <table class="table table-hover">
+
+                                            <thead>
+
+                                                <tr>
+
+                                                    <th>Exam</th>
+
+                                                    <th>Course</th>
+
+                                                    <th>Date</th>
+
+                                                </tr>
+
+                                            </thead>
+
+                                            <tbody>
+
+                                                <t t-foreach="upcoming_exams"
+                                                   t-as="exam">
+
+                                                    <tr>
+
+                                                        <td>
+
+                                                            <t t-esc="exam.name"/>
+
+                                                        </td>
+
+                                                        <td>
+
+                                                            <t t-esc="exam.course_id.name"/>
+
+                                                        </td>
+
+                                                        <td>
+
+                                                            <span t-field="exam.exam_date"/>
+
+                                                        </td>
+
+                                                    </tr>
+
+                                                </t>
+
+                                            </tbody>
+
+                                        </table>
+
+                                    </t>
+
+                                    <t t-else="">
+
+                                        <div class="alert alert-info mb-0">
+
+                                            No upcoming exams.
+
+                                        </div>
+
+                                    </t>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </t>
+    </template>
+</odoo>

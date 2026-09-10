@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template id="report_student_profile">
+
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="o">
+
+                <t t-call="web.external_layout">
+
+                    <div class="page">
+
+                        <table style="width:100%; border-bottom:3px solid #0d6efd; margin-bottom:20px;">
+                            <tr>
+
+                                <td style="width:20%; text-align:center;">
+
+                                    <img src="/college_erp_ready/static/src/img/logo.png"
+                                         style="height:90px;"/>
+
+                                </td>
+
+                                <td style="width:80%; text-align:center;">
+
+                                    <h1 style="color:#000035; margin-bottom:5px;">
+                                        COLLEGE ERP
+                                    </h1>
+
+                                    <h3 style="margin-top:0;">
+                                        Student Profile
+                                    </h3>
+
+                                </td>
+
+                            </tr>
+                        </table>
+
+                        <div style="text-align:center; margin-bottom:20px;">
+
+                            <img t-if="o.image_1920"
+                                 t-att-src="image_data_uri(o.image_1920)"
+                                 style="width:130px;
+                                        height:130px;
+                                        border-radius:50%;
+                                        border:3px solid #0d6efd;"/>
+
+                        </div>
+
+                        <div style="background:#f8f9fa;
+                                    border:1px solid #dee2e6;
+                                    padding:15px;">
+
+                            <h3 style="background:#000035;
+                                       color:white;
+                                       padding:10px;">
+                                Student Information
+                            </h3>
+
+                            <table style="width:100%; border-collapse:collapse;">
+
+                                <tr>
+                                    <th style="border:1px solid #ccc; padding:8px;">Student Code</th>
+                                    <td style="border:1px solid #ccc; padding:8px;">
+                                        <span t-field="o.student_code"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th style="border:1px solid #ccc; padding:8px;">Name</th>
+                                    <td style="border:1px solid #ccc; padding:8px;">
+                                        <span t-field="o.name"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th style="border:1px solid #ccc; padding:8px;">Email</th>
+                                    <td style="border:1px solid #ccc; padding:8px;">
+                                        <span t-field="o.email"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th style="border:1px solid #ccc; padding:8px;">Phone</th>
+                                    <td style="border:1px solid #ccc; padding:8px;">
+                                        <span t-field="o.phone"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th style="border:1px solid #ccc; padding:8px;">Gender</th>
+                                    <td style="border:1px solid #ccc; padding:8px;">
+                                        <span t-field="o.gender"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th style="border:1px solid #ccc; padding:8px;">Birth Date</th>
+                                    <td style="border:1px solid #ccc; padding:8px;">
+                                        <span t-field="o.birth_date"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th style="border:1px solid #ccc; padding:8px;">Age</th>
+                                    <td style="border:1px solid #ccc; padding:8px;">
+                                        <span t-field="o.age"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th style="border:1px solid #ccc; padding:8px;">Department</th>
+                                    <td style="border:1px solid #ccc; padding:8px;">
+                                        <span t-field="o.department_id"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th style="border:1px solid #ccc; padding:8px;">Admission Number</th>
+                                    <td style="border:1px solid #ccc; padding:8px;">
+                                        <span t-field="o.admission_id"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th style="border:1px solid #ccc; padding:8px;">Status</th>
+                                    <td style="border:1px solid #ccc; padding:8px;">
+                                        <span t-field="o.state"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th style="border:1px solid #ccc; padding:8px;">Total Fee</th>
+                                    <td style="border:1px solid #ccc; padding:8px;">
+                                        <span
+                                                t-field="o.total_fee"
+                                                t-options="{
+                                                'widget':'monetary',
+                                                'display_currency':o.currency_id
+                                            }"/>
+                                    </td>
+                                </tr>
+
+
+                            </table>
+
+                        </div>
+
+                        <br/>
+
+                        <h3 style="background:#000035; color:white; padding:10px;">
+                            Course Details
+                        </h3>
+
+                        <table style="width:100%; border-collapse:collapse;">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th style="background:#e9ecef;
+                                               border:1px solid #ccc;
+                                               padding:10px;
+                                               font-size:20px;">
+                                        Course Name
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <t t-foreach="o.course_ids" t-as="course">
+
+                                    <tr>
+
+                                        <td style="border:1px solid #ccc;
+                                                   padding:10px;">
+
+                                            <span t-field="course.name"/>
+
+                                        </td>
+
+                                    </tr>
+
+                                </t>
+
+                            </tbody>
+
+                        </table>
+
+                        <br/>
+
+
+                        <div style="
+                            border-top:2px solid #0d6efd;
+                            padding-top:10px;
+                            font-size:12px;
+                            text-align:right;">
+
+                            Generated On :
+                            <span t-field="o.admission_date"/>
+
+                        </div>
+
+                    </div>
+
+                </t>
+
+            </t>
+
+        </t>
+
+    </template>
+
+</odoo>

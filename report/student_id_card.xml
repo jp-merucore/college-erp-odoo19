@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <template id="report_student_id_card">
+
+            <t t-call="web.html_container">
+
+                <t t-foreach="docs" t-as="o">
+
+                    <div class="page">
+
+                        <div style="
+                            width:320px;
+                            height:570px;
+                            margin:auto;
+                            background:white;
+                            border:1px solid #d9d9d9;
+                            border-radius:25px;
+                            padding:20px;
+                            position:relative;
+                            font-family:Arial, sans-serif;
+                        ">
+
+                            <!-- College Name -->
+
+                            <div style="text-align:center;">
+
+                                <h2 style="
+                                    margin:0;
+                                    color:#1f2937;
+                                    font-weight:bold;
+                                ">
+                                    MERUCORE COLLEGE
+                                </h2>
+
+                                <div style="font-size:20px;">
+                                    STUDENT
+                                </div>
+
+                                <div style="font-size:20px;">
+                                    IDENTIFICATION CARD
+                                </div>
+
+                            </div>
+
+                            <!-- Student Photo -->
+
+                            <!-- Student Photo -->
+
+                            <div style="text-align:center;margin-top:15px;">
+                                <t t-set="base_url" t-value="web_base_url"/>
+                                <t t-if="o.image_1920">
+                                    <img t-att-src="image_data_uri(o.image_1920)"
+                                         style="
+                                            width:140px;
+                                            height:170px;
+                                            border:1px solid #ccc;
+                                            margin:auto;
+                                            display:flex;
+                                            align-items:center;
+                                            justify-content:center;
+                                            color:#888;
+                                            font-size:14px;
+                                         "/>
+                                </t>
+
+                                <t t-else="">
+                                    <img t-att-src="base_url + '/college_erp_ready/static/src/img/default_student.png'"
+                                         style="
+                                            width:140px;
+                                            height:170px;
+                                            object-fit:cover;
+                                            border:1px solid #d9d9d9;
+                                         "/>
+                                </t>
+
+                            </div>
+
+                            <!-- Student Name -->
+
+                            <div style="
+                                text-align:center;
+                                margin-top:10px;
+                            ">
+
+                                <div style="
+                                    font-size:28px;
+                                    font-weight:bold;
+                                ">
+                                    <span t-field="o.name"/>
+                                </div>
+
+                                <div style="
+                                    font-size:18px;
+                                    color:#444;
+                                ">
+                                    STUDENT
+                                </div>
+
+                            </div>
+
+                            <!-- Student Details -->
+
+                            <table style="
+                                width:100%;
+                                margin-top:20px;
+                                margin-bottom:50px;
+                                font-size:16px;
+                            ">
+
+                                <tr>
+                                    <td>
+                                        <strong>STUDENT ID</strong>
+                                    </td>
+
+                                    <td>
+                                        <span t-field="o.student_code"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <strong>DEPARTMENT</strong>
+                                    </td>
+
+                                    <td>
+                                        <span t-field="o.department_id"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <strong>ADMISSION DATE</strong>
+                                    </td>
+
+                                    <td>
+                                        <span t-field="o.admission_date"/>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                            <!-- Principal Signature -->
+
+                            <div style="
+                                position:absolute;
+                                bottom:5px;
+                                left:0;
+                                right:0;
+                                text-align:center;
+                            ">
+
+                                <t t-set="base_url" t-value="web_base_url"/>
+
+                                <img t-att-src="base_url + '/college_erp_ready/static/src/img/principal_sign.png'"
+                                     style="width:160px;height:auto;"/>
+
+                                <div style="
+                                    width:120px;
+                                    border-top:1px solid black;
+                                    margin:5px auto 0;
+                                    font-weight:bold;
+                                ">
+                                    Principal
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </t>
+
+            </t>
+
+        </template>
+
+    </data>
+
+
+</odoo>

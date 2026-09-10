@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_college_student,college.student,model_college_student,,1,1,1,1
+access_college_course,college.course,model_college_course,,1,1,1,1
+access_college_department,college.department,model_college_department,,1,1,1,1
+access_college_fee,college.fee,model_college_fee,,1,1,1,1
+access_college_admission,college.admission,model_college_admission,,1,1,1,1
+access_college_attendance_user,access_college_attendance_user,model_college_attendance,base.group_user,1,1,1,1
+access_college_exam_user,access_college_exam_user,model_college_exam,base.group_user,1,1,1,1
+access_college_exam_result_user,access_college_exam_result_user,model_college_exam_result,base.group_user,1,1,1,1
+access_college_notice,college.notice,model_college_notice,base.group_user,1,1,1,1
+access_college_timetable,college.timetable,model_college_timetable,base.group_user,1,1,1,1
+access_college_subject,college.subject,model_college_subject,base.group_user,1,1,1,1
+access_college_teacher,college.teacher,model_college_teacher,base.group_user,1,1,1,1

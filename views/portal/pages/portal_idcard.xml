@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="portal_idcard">
+
+        <t t-call="college_erp_ready.college_portal_layout">
+
+            <t t-call="college_erp_ready.portal_page">
+
+                <!-- Page Header -->
+
+                <t t-set="page_title"
+                   t-value="'Student ID Card'"/>
+
+                <t t-set="page_subtitle"
+                   t-value="'Digital Student Identity Card'"/>
+
+                <t t-set="page_icon"
+                   t-value="'fa fa-id-card text-primary me-2'"/>
+
+                <t t-set="page_total"
+                   t-value="student.student_code"/>
+
+                <t t-call="college_erp_ready.portal_page_header"/>
+
+                <div class="row justify-content-center">
+
+                    <div class="col-lg-6">
+
+                        <div class="card shadow border-0">
+
+                            <div class="card-body text-center">
+
+                                <t t-if="student.image_1920">
+
+                                    <img t-att-src="image_data_uri(student.image_1920)"
+                                         class="rounded-circle mb-3"
+                                         style="width:150px;height:150px;object-fit:cover;"/>
+
+                                </t>
+
+                                <h3 class="fw-bold">
+
+                                    <t t-esc="student.name"/>
+
+                                </h3>
+
+                                <p class="text-muted">
+
+                                    <t t-esc="student.student_code"/>
+
+                                </p>
+
+                                <hr/>
+
+                                <table class="table table-borderless">
+
+                                    <tr>
+
+                                        <th>Department</th>
+
+                                        <td>
+                                            <t t-esc="student.department_id.name"/>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <th>Admission Date</th>
+
+                                        <td>
+                                            <span t-field="student.admission_date"/>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <th>Status</th>
+
+                                        <td>
+
+                                            <span class="badge bg-success">
+
+                                                <t t-esc="student.state"/>
+
+                                            </span>
+
+                                        </td>
+
+                                    </tr>
+
+                                </table>
+
+                                <a href="/my/idcard/download"
+                                   class="btn btn-primary btn-lg mt-3">
+
+                                    <i class="fa fa-download me-2"/>
+
+                                    Download ID Card
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </t>
+
+        </t>
+
+    </template>
+
+</odoo>

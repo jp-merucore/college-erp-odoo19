@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ==========================================
+                    LIST VIEW
+    =========================================== -->
+
+    <record id="view_college_teacher_list" model="ir.ui.view">
+        <field name="name">college.teacher.list</field>
+        <field name="model">college.teacher</field>
+        <field name="arch" type="xml">
+
+            <list>
+
+                <field name="image_1920" widget="image"/>
+
+                <field name="employee_code"/>
+
+                <field name="name"/>
+
+                <field name="department_id"/>
+
+                <field name="email"/>
+
+                <field name="mobile"/>
+
+                <field name="experience"/>
+
+            </list>
+
+        </field>
+    </record>
+
+
+    <!-- ==========================================
+                    FORM VIEW
+    =========================================== -->
+
+    <record id="view_college_teacher_form" model="ir.ui.view">
+        <field name="name">college.teacher.form</field>
+        <field name="model">college.teacher</field>
+        <field name="arch" type="xml">
+
+            <form string="Teacher">
+
+                <sheet>
+
+                    <!-- Title -->
+
+                    <div class="oe_title">
+
+                        <label for="name"/>
+
+                        <h1>
+
+                            <field name="name"
+                                   placeholder="Teacher Name"/>
+
+                        </h1>
+
+                        <div class="text-muted">
+
+                            <field name="employee_code"
+                                   placeholder="Employee ID"/>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Main Information -->
+
+                    <group>
+
+                        <group>
+
+                            <field name="image_1920"
+                                   widget="image"
+                                   class="oe_avatar"
+                                   options="{'size':[180,180]}"/>
+
+                        </group>
+
+                        <group>
+
+                            <field name="department_id"/>
+
+                            <field name="gender"/>
+
+                            <field name="joining_date"/>
+
+                            <field name="experience"/>
+
+                        </group>
+
+                        <group>
+
+                            <field name="email"/>
+
+                            <field name="mobile"/>
+
+                            <field name="qualification"/>
+
+                        </group>
+
+                    </group>
+
+
+                    <!-- Notebook -->
+
+                    <notebook>
+
+                        <page string="Subjects">
+
+                            <field name="subject_ids"
+                                   widget="many2many_tags"
+                                   options="{'color_field': False}"/>
+
+                        </page>
+
+                        <page string="Courses">
+
+                            <field name="course_ids"
+                                   widget="many2many_tags"/>
+
+                        </page>
+
+                        <page string="Address">
+
+                            <field name="address"
+                                   placeholder="Teacher Address..."/>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+                <chatter/>
+
+            </form>
+
+        </field>
+    </record>
+
+
+    <!-- ==========================================
+                    SEARCH VIEW
+    =========================================== -->
+
+    <record id="view_college_teacher_search" model="ir.ui.view">
+        <field name="name">college.teacher.search</field>
+        <field name="model">college.teacher</field>
+        <field name="arch" type="xml">
+
+            <search>
+
+                <field name="name"/>
+
+                <field name="employee_code"/>
+
+                <field name="department_id"/>
+
+                <field name="email"/>
+
+                <filter
+                        name="active"
+                        string="Active"
+                        domain="[('active','=',True)]"/>
+
+            </search>
+
+        </field>
+    </record>
+
+
+    <!-- ==========================================
+                    ACTION
+    =========================================== -->
+
+    <record id="action_college_teacher"
+            model="ir.actions.act_window">
+
+        <field name="name">Teachers</field>
+
+        <field name="res_model">college.teacher</field>
+
+        <field name="view_mode">list,form</field>
+
+    </record>
+
+</odoo>

@@ -1,0 +1,190 @@
+/* ==========================================================
+   College ERP Portal Layout
+========================================================== */
+
+.college_portal_wrapper {
+    display: flex;
+    min-height: 100vh;
+    background: #f1f5f9;
+}
+
+/* ==========================================================
+   Sidebar
+========================================================== */
+
+.college_sidebar {
+    width: 260px;
+    background: #1e293b;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+/* Logo */
+
+.college_sidebar_logo {
+    padding: 25px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.college_sidebar_logo a {
+    color: white;
+    text-decoration: none;
+}
+
+.college_sidebar_logo h4 {
+    margin-top: 10px;
+    margin-bottom: 0;
+    color: #fff;
+}
+
+.college_sidebar_logo small {
+    color: #cbd5e1;
+}
+
+/* Menu */
+
+.college_sidebar_menu {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.college_sidebar_menu li {
+    margin: 4px 15px;
+}
+
+.college_sidebar_menu li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.college_sidebar_menu li a:hover {
+    background: #2563eb;
+    color: #fff;
+}
+
+/* Footer */
+
+.college_sidebar_footer {
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+}
+
+.college_sidebar_footer a {
+    display: block;
+    color: #cbd5e1;
+    text-decoration: none;
+    margin-bottom: 12px;
+}
+
+.college_sidebar_footer a:hover {
+    color: #fff;
+}
+
+/* ==========================================================
+   Main
+========================================================== */
+
+.college_main_wrapper {
+    flex: 1;
+    margin-left: 260px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================================
+   Header
+========================================================== */
+
+.college_header {
+    height: 70px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+}
+
+.college_header_left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.college_menu_btn {
+    border: none;
+    background: none;
+    font-size: 22px;
+}
+
+.college_header_right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.college_search input {
+    width: 220px;
+}
+
+.college_notification {
+    font-size: 22px;
+    color: #334155;
+}
+
+.college_user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.college_user_image {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* ==========================================================
+   Content
+========================================================== */
+
+.college_page_content {
+    padding: 30px;
+}
+
+/* ==========================================
+   Active Sidebar Menu
+========================================== */
+
+.college_sidebar_menu li.active a {
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-weight: 600;
+
+    border-radius: 10px;
+
+}
+
+.college_sidebar_menu li.active a i {
+
+    color: #ffffff;
+
+}

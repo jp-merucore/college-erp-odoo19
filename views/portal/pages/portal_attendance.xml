@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template id="portal_attendance"
+              name="Student Attendance">
+
+        <t t-call="college_erp_ready.college_portal_layout">
+
+            <div class="container mt-4">
+
+                <!-- Header -->
+
+                <div class="card portal-header shadow-lg mb-4">
+
+                    <div class="card-body">
+
+                        <div class="row align-items-center">
+
+                            <div class="col-lg-8">
+
+                                <h2 class="fw-bold">
+
+                                    <i class="fa fa-calendar-check-o me-2"/>
+
+                                    My Attendance
+
+                                </h2>
+
+                                <p class="mb-0">
+
+                                    Attendance Percentage
+
+                                </p>
+
+                            </div>
+
+                            <div class="col-lg-4 text-center">
+
+                                <h1 class="display-4 fw-bold">
+
+                                    <t t-out="attendance_percent"/>%
+
+                                </h1>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Statistics -->
+
+                <div class="row">
+
+                    <div class="col-md-3 mb-4">
+
+                        <div class="card portal-card">
+
+                            <div class="card-body portal-stat">
+
+                                <i class="fa fa-check-circle text-success"/>
+
+                                <h2>
+
+                                    <t t-out="present"/>
+
+                                </h2>
+
+                                <h6>Present</h6>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3 mb-4">
+
+                        <div class="card portal-card">
+
+                            <div class="card-body portal-stat">
+
+                                <i class="fa fa-times-circle text-danger"/>
+
+                                <h2>
+
+                                    <t t-out="absent"/>
+
+                                </h2>
+
+                                <h6>Absent</h6>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3 mb-4">
+
+                        <div class="card portal-card">
+
+                            <div class="card-body portal-stat">
+
+                                <i class="fa fa-clock-o text-warning"/>
+
+                                <h2>
+
+                                    <t t-out="late"/>
+
+                                </h2>
+
+                                <h6>Late</h6>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3 mb-4">
+
+                        <div class="card portal-card">
+
+                            <div class="card-body portal-stat">
+
+                                <i class="fa fa-plane text-info"/>
+
+                                <h2>
+
+                                    <t t-out="leave"/>
+
+                                </h2>
+
+                                <h6>Leave</h6>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Progress -->
+
+                <div class="card portal-card mb-4">
+
+                    <div class="card-header">
+
+                        Attendance Progress
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="progress" style="height:25px;">
+
+                            <div class="progress-bar bg-success"
+                                 role="progressbar"
+                                 t-attf-style="width: {{ attendance_percent }}%;">
+
+                                <t t-out="attendance_percent"/>%
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Attendance Table -->
+
+                <div class="card portal-card">
+
+                    <div class="card-header">
+
+                        Attendance History
+
+                    </div>
+
+                    <div class="card-body p-0">
+
+                        <table class="table table-hover mb-0">
+
+                            <thead class="table-light">
+
+                                <tr>
+
+                                    <th>Date</th>
+
+                                    <th>Course</th>
+
+                                    <th>Department</th>
+
+                                    <th>Status</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr t-foreach="attendance"
+                                    t-as="att">
+
+                                    <td>
+
+                                        <span t-field="att.attendance_date"/>
+
+                                    </td>
+
+                                    <td>
+
+                                        <t t-out="att.course_id.name"/>
+
+                                    </td>
+
+                                    <td>
+
+                                        <t t-out="att.department_id.name"/>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span t-if="att.status=='present'"
+                                              class="badge bg-success">
+
+                                            Present
+
+                                        </span>
+
+                                        <span t-if="att.status=='absent'"
+                                              class="badge bg-danger">
+
+                                            Absent
+
+                                        </span>
+
+                                        <span t-if="att.status=='late'"
+                                              class="badge bg-warning text-dark">
+
+                                            Late
+
+                                        </span>
+
+                                        <span t-if="att.status=='leave'"
+                                              class="badge bg-info">
+
+                                            Leave
+
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </t>
+
+    </template>
+
+</odoo>

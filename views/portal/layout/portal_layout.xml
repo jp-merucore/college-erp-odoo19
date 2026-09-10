@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ==========================================================
+         College ERP - Shared Portal Layout
+         Every portal page will use this template.
+    =========================================================== -->
+
+    <template id="college_portal_layout"
+              name="College Portal Layout">
+
+        <!-- Use Odoo Portal Layout -->
+        <t t-call="portal.portal_layout">
+
+            <div class="college_portal_wrapper">
+
+                <!-- Left Sidebar -->
+                <t t-call="college_erp_ready.portal_sidebar"/>
+
+                <!-- Main Area -->
+                <div class="college_main_wrapper">
+
+                    <!-- Header -->
+                    <t t-call="college_erp_ready.portal_header"/>
+
+                    <!-- Dynamic Page Content -->
+                    <main class="college_page_content">
+
+                        <t t-out="0"/>
+
+                    </main>
+
+                </div>
+
+            </div>
+
+        </t>
+
+    </template>
+
+</odoo>

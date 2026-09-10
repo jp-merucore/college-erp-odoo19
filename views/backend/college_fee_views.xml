@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="college_fee_list" model="ir.ui.view">
+        <field name="name">college.fee.list</field>
+        <field name="model">college.fee</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="fee_number"/>
+                <field name="student_id"/>
+                <field name="department_id"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="amount" widget="monetary"/>
+                <field name="due_date"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="college_fee_form" model="ir.ui.view">
+        <field name="name">college.fee.form</field>
+        <field name="model">college.fee</field>
+        <field name="arch" type="xml">
+            <form>
+
+                <header>
+
+                    <button name="action_open"
+                            string="Open"
+                            type="object"
+                            invisible="state != 'draft'"/>
+
+                    <button name="action_pending"
+                            string="Pending"
+                            type="object"
+                            invisible="state != 'open'"/>
+
+                    <button name="action_paid"
+                            string="Mark Paid"
+                            type="object"
+                            invisible="state != 'pending'"/>
+
+                    <field name="state"
+                           widget="statusbar"
+                           statusbar_visible="draft,open,pending,paid"/>
+
+                </header>
+
+                <sheet>
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="fee_number" readonly="1"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="student_id"/>
+                            <field name="department_id"/>
+                        </group>
+
+                        <group>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="amount"
+                                   widget="monetary"/>
+                            <field name="due_date"/>
+                            <field name="paid_date"/>
+                        </group>
+                    </group>
+
+                    <field name="note"/>
+
+                </sheet>
+
+                <chatter/>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="college_fee_search" model="ir.ui.view">
+        <field name="name">college.fee.search</field>
+        <field name="model">college.fee</field>
+        <field name="arch" type="xml">
+            <search>
+
+                <field name="fee_number"/>
+                <field name="student_id"/>
+
+                <filter name="open_fee"
+                        string="Open"
+                        domain="[('state','=','open')]"/>
+
+                <filter name="pending_fee"
+                        string="pending"
+                        domain="[('state','=','pending')]"/>
+
+                <filter name="paid_fee"
+                        string="Paid"
+                        domain="[('state','=','paid')]"/>
+
+
+            </search>
+        </field>
+    </record>
+
+    <record id="action_college_fee" model="ir.actions.act_window">
+        <field name="name">College Fees</field>
+        <field name="res_model">college.fee</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="college_fee_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Course!
+            </p>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- List View -->
+    <record id="college_exam_result_list"
+            model="ir.ui.view">
+
+        <field name="name">college.exam.result.list</field>
+        <field name="model">college.exam.result</field>
+
+        <field name="arch" type="xml">
+
+            <list>
+
+                <field name="exam_id"/>
+                <field name="student_id"/>
+                <field name="department_id"/>
+                <field name="marks"/>
+                <field name="percentage"/>
+                <field name="result"/>
+
+            </list>
+
+        </field>
+
+    </record>
+
+    <!-- Form View -->
+    <record id="college_exam_result_form"
+            model="ir.ui.view">
+
+        <field name="name">college.exam.result.form</field>
+        <field name="model">college.exam.result</field>
+
+        <field name="arch" type="xml">
+
+            <form>
+
+                <sheet>
+
+                    <group>
+
+                        <group>
+                            <field name="exam_id"/>
+                            <field name="student_id"/>
+                        </group>
+
+                        <group>
+                            <field name="marks"/>
+                            <field name="percentage" readonly="1"/>
+                            <field name="result" readonly="1"/>
+                        </group>
+
+                    </group>
+
+                </sheet>
+
+            </form>
+
+        </field>
+
+    </record>
+
+    <!-- Action -->
+    <record id="action_college_exam_result"
+            model="ir.actions.act_window">
+
+        <field name="name">Exam Results</field>
+        <field name="res_model">college.exam.result</field>
+        <field name="view_mode">list,form</field>
+
+    </record>
+
+</odoo>

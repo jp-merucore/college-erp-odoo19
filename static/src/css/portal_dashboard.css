@@ -1,0 +1,59 @@
+.portal-action-card {
+    border-radius: 18px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.portal-action-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, .25);
+}
+
+.portal-card {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+    transition: .3s;
+    background: #fff;
+}
+
+.portal-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .15);
+}
+
+.portal-header {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+}
+
+.portal-section-title {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.portal-info-table th {
+    width: 180px;
+    font-weight: 600;
+}
+
+.portal-stat {
+    text-align: center;
+    padding: 25px;
+}
+
+.portal-stat i {
+    font-size: 42px;
+    color: #1d4ed8;
+    margin-bottom: 15px;
+}
+
+.portal-avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
+}

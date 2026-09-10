@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="college_admission_list" model="ir.ui.view">
+        <field name="name">college.admission.list</field>
+        <field name="model">college.admission</field>
+        <field name="arch" type="xml">
+            <list string="College Admissions">
+
+                <field name="admission_no"/>
+                <field name="applicant_name"/>
+                <field name="department_id"/>
+                <field name="admission_date"/>
+                <field name="student_id"/>
+                <field name="state" widget="badge"/>
+
+            </list>
+        </field>
+    </record>
+
+    <record id="college_admission_form" model="ir.ui.view">
+        <field name="name">college.admission.form</field>
+        <field name="model">college.admission</field>
+        <field name="arch" type="xml">
+            <form string="College Admission">
+
+                <header>
+
+                    <button name="action_confirm"
+                            string="Confirm"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state != 'draft'"/>
+
+                    <button name="action_reject"
+                            string="Reject"
+                            type="object"
+                            invisible="state == 'rejected'"/>
+
+                    <button name="action_draft"
+                            string="Reset Draft"
+                            type="object"
+                            invisible="state == 'draft'"/>
+
+                    <field name="state"
+                           widget="statusbar"
+                           statusbar_visible="draft,confirmed,rejected"/>
+
+                </header>
+
+                <sheet>
+
+                    <group>
+
+                        <group>
+
+                            <field name="admission_no"
+                                   readonly="1"/>
+
+                            <field name="applicant_name"/>
+
+                            <field name="department_id"/>
+
+                        </group>
+
+                        <group>
+
+                            <field name="email"/>
+
+                            <field name="phone"/>
+
+                            <field name="admission_date"/>
+
+                        </group>
+
+                    </group>
+
+                    <notebook>
+
+                        <page string="Courses">
+
+                            <field name="course_ids"
+                                   widget="many2many_tags"
+                                   domain="[('department_id', '=', department_id)]"/>
+
+                        </page>
+
+                        <page string="Student">
+
+                            <field name="student_id"
+                                   readonly="1"/>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+                <chatter>
+                    <field name="message_follower_ids"
+                           widget="mail_followers"/>
+
+                    <field name="message_ids"
+                           widget="mail_thread"/>
+
+                    <field name="activity_ids"
+                           widget="mail_activity"/>
+                </chatter>
+
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="college_admission_search" model="ir.ui.view">
+        <field name="name">college.admission.search</field>
+        <field name="model">college.admission</field>
+        <field name="arch" type="xml">
+            <search>
+
+                <filter
+                        name="draft"
+                        string="Draft"
+                        domain="[('state','=','draft')]"/>
+
+                <filter
+                        name="confirmed"
+                        string="Confirmed"
+                        domain="[('state','=','confirmed')]"/>
+
+                <filter
+                        name="rejected"
+                        string="Rejected"
+                        domain="[('state','=','rejected')]"/>
+
+                <group>
+                    <field name="admission_no"/>
+                    <field name="applicant_name"/>
+                    <field name="department_id"/>
+                </group>
+
+                <group>
+                    <filter string="Department"
+                            name="group_department"
+                            domain="[]"
+                            context="{'group_by':'department_id'}"/>
+                </group>
+
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_college_admission" model="ir.actions.act_window">
+        <field name="name">College Admissions</field>
+        <field name="res_model">college.admission</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="college_admission_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Admission!
+            </p>
+        </field>
+    </record>
+
+</odoo>

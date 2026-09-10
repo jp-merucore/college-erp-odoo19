@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+            id="menu_college_root"
+            name="College ERP"
+            sequence="1"
+            web_icon="college_erp_ready,static/description/icon.png"
+    />
+
+    <menuitem
+            id="menu_college_dashboard"
+            name="Dashboard"
+            parent="menu_college_root"
+            action="action_college_dashboard"
+            sequence="1"/>
+
+    <menuitem id="menu_college_students"
+              name="College Student"
+              parent="menu_college_root"
+              action="action_college_student"
+    />
+    <menuitem id="menu_college_courses"
+              name="College Course"
+              parent="menu_college_root"
+              action="action_college_course"
+    />
+
+    <menuitem id="menu_college_departments"
+              name="College Department"
+              parent="menu_college_root"
+              action="action_college_department"
+    />
+
+    <menuitem id="menu_college_fees"
+              name="College Fees"
+              parent="menu_college_root"
+              action="action_college_fee"
+    />
+
+    <menuitem id="menu_college_admissions"
+              name="College Admissions"
+              parent="menu_college_root"
+              action="action_college_admission"
+    />
+
+    <menuitem id="menu_college_attendance"
+              name="Attendance"
+              parent="menu_college_root"
+              action="action_college_attendance"
+    />
+
+    <menuitem
+            id="menu_college_exam"
+            name="Exams"
+            parent="menu_college_root"
+            action="action_college_exam"
+    />
+
+    <menuitem
+            id="menu_college_exam_result"
+            name="Exam Results"
+            parent="menu_college_root"
+            action="action_college_exam_result"
+    />
+
+    <menuitem
+            id="menu_college_notice"
+            name="Notices"
+            parent="menu_college_root"
+            action="action_college_notice"
+    />
+
+    <menuitem
+            id="menu_college_timetable"
+            name="Timetable"
+            parent="menu_college_root"
+            action="action_college_timetable"
+            sequence="65"
+    />
+
+    <menuitem
+            id="menu_college_subject"
+            name="Subjects"
+            parent="menu_college_root"
+            action="action_college_subject"
+            sequence="30"
+    />
+
+    <menuitem
+            id="menu_college_teacher"
+            name="Teachers"
+            parent="menu_college_root"
+            action="action_college_teacher"
+            sequence="35"
+    />
+</odoo>

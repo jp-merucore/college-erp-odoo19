@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ==========================================================
+         College ERP - Portal Sidebar
+    =========================================================== -->
+
+    <template id="portal_sidebar"
+              name="Portal Sidebar">
+
+        <aside class="college_sidebar">
+
+            <!-- ===============================
+                    Logo
+            ================================ -->
+
+            <div class="college_sidebar_logo">
+
+                <a href="/my/dashboard"
+                   class="text-decoration-none">
+
+                    <i class="fa fa-graduation-cap fa-2x"/>
+
+                    <h4>College ERP</h4>
+
+                    <small>Student Portal</small>
+
+                </a>
+
+            </div>
+
+            <!-- ===============================
+                    Menu
+            ================================ -->
+
+            <ul class="college_sidebar_menu">
+
+                <li t-attf-class="#{'active' if page_name == 'dashboard' else ''}">
+                    <a href="/my/dashboard">
+                        <i class="fa fa-home"/>
+                        Dashboard
+                    </a>
+                </li>
+
+                <li t-attf-class="#{'active' if page_name == 'profile' else ''}">
+                    <a href="/my/profile">
+                        <i class="fa fa-user"/>
+                        My Profile
+                    </a>
+                </li>
+
+                <li t-attf-class="#{'active' if page_name == 'courses' else ''}">
+                    <a href="/my/courses">
+                        <i class="fa fa-book"/>
+                        My Courses
+                    </a>
+                </li>
+
+                <li t-attf-class="#{'active' if page_name == 'attendance' else ''}">
+                    <a href="/my/attendance">
+                        <i class="fa fa-calendar-check-o"/>
+                        Attendance
+                    </a>
+                </li>
+
+                <li t-attf-class="#{'active' if page_name == 'results' else ''}">
+                    <a href="/my/results">
+                        <i class="fa fa-line-chart"/>
+                        Results
+                    </a>
+                </li>
+
+                <li t-attf-class="#{'active' if page_name == 'fees' else ''}">
+                    <a href="/my/fees">
+                        <i class="fa fa-money"/>
+                        Fees
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/my/idcard">
+                        <i class="fa fa-id-card"/>
+                        ID Card
+                    </a>
+                </li>
+
+                <li t-attf-class="#{'active' if page_name == 'notices' else ''}">
+                    <a href="/my/notices">
+                        <i class="fa fa-bullhorn"/>
+                        Notices
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-clock-o"/>
+                        Timetable
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-calendar"/>
+                        Calendar
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-certificate"/>
+                        Certificates
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bookmark"/>
+                        Library
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bus"/>
+                        Transport
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-building"/>
+                        Hostel
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- ===============================
+                    Footer
+            ================================ -->
+
+            <div class="college_sidebar_footer">
+
+                <a href="#">
+
+                    <i class="fa fa-cog"/>
+
+                    Settings
+
+                </a>
+
+                <a href="/web/session/logout">
+
+                    <i class="fa fa-sign-out"/>
+
+                    Logout
+
+                </a>
+
+            </div>
+
+        </aside>
+
+    </template>
+
+</odoo>

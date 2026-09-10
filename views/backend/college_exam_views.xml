@@ -1,0 +1,126 @@
+<odoo>
+
+    <record id="college_exam_list"
+            model="ir.ui.view">
+
+        <field name="name">college.exam.list</field>
+        <field name="model">college.exam</field>
+
+        <field name="arch" type="xml">
+
+            <list>
+
+                <field name="exam_no"/>
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="course_id"/>
+                <field name="exam_date"/>
+                <field name="state"/>
+
+            </list>
+
+        </field>
+
+    </record>
+
+    <record id="college_exam_form"
+            model="ir.ui.view">
+
+        <field name="name">college.exam.form</field>
+        <field name="model">college.exam</field>
+
+        <field name="arch" type="xml">
+
+            <form>
+
+                <header>
+
+                    <button name="action_start"
+                            type="object"
+                            string="Start"
+                            invisible="state != 'draft'"/>
+
+                    <button name="action_complete"
+                            type="object"
+                            string="Complete"
+                            invisible="state != 'ongoing'"/>
+
+                    <field name="state"
+                           widget="statusbar"/>
+
+                </header>
+
+                <sheet>
+
+                    <group>
+
+                        <group>
+
+                            <field name="exam_no"/>
+
+                            <field name="name"/>
+
+                            <field name="exam_date"/>
+
+                        </group>
+
+                        <group>
+
+                            <field name="department_id"/>
+
+                            <field name="course_id"/>
+
+                            <field name="total_marks"/>
+
+                            <field name="pass_marks"/>
+
+                        </group>
+
+                    </group>
+
+                    <notebook>
+
+                        <page string="Results">
+
+                            <field name="result_ids">
+
+                                <list editable="bottom">
+
+                                    <field name="student_id"/>
+
+                                    <field name="marks"/>
+
+                                    <field name="percentage"
+                                           readonly="1"/>
+
+                                    <field name="result"
+                                           readonly="1"/>
+
+                                </list>
+
+                            </field>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+                <chatter/>
+
+            </form>
+
+        </field>
+
+    </record>
+
+    <record id="action_college_exam"
+            model="ir.actions.act_window">
+
+        <field name="name">Exams</field>
+        <field name="res_model">college.exam</field>
+        <field name="view_mode">list,form</field>
+
+    </record>
+
+</odoo>

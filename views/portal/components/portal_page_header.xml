@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ==========================================================
+         Reusable Portal Page Header
+    =========================================================== -->
+
+    <template id="portal_page_header"
+              name="Portal Page Header">
+
+        <div class="card shadow-sm border-0 mb-4">
+
+            <div class="card-body d-flex justify-content-between align-items-center">
+
+                <!-- Left Side -->
+
+                <div>
+
+                    <h2 class="fw-bold mb-1">
+
+                        <i t-att-class="page_icon"/>
+
+                        <span t-esc="page_title"/>
+
+                    </h2>
+
+                    <p class="text-muted mb-0">
+
+                        <span t-esc="page_subtitle"/>
+
+                    </p>
+
+                </div>
+
+                <!-- Right Side -->
+
+                <div class="text-end">
+
+                    <h2 class="fw-bold text-primary mb-0">
+
+                        <span t-esc="page_total"/>
+
+                    </h2>
+
+                    <small class="text-muted">
+
+                        Total
+
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </template>
+
+</odoo>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ==========================================
+                    LIST VIEW
+    =========================================== -->
+
+    <record id="view_college_timetable_list" model="ir.ui.view">
+        <field name="name">college.timetable.list</field>
+        <field name="model">college.timetable</field>
+        <field name="arch" type="xml">
+
+            <list>
+
+                <field name="subject_id"/>
+
+                <field name="teacher_id"/>
+
+                <field name="course_id"/>
+
+                <field name="department_id"/>
+
+                <field name="semester"/>
+
+                <field name="day_of_week"/>
+
+                <field name="start_time"/>
+
+                <field name="end_time"/>
+
+                <field name="room"/>
+
+                <field name="state"/>
+
+            </list>
+
+        </field>
+    </record>
+
+
+    <!-- ==========================================
+                    FORM VIEW
+    =========================================== -->
+
+    <record id="view_college_timetable_form" model="ir.ui.view">
+        <field name="name">college.timetable.form</field>
+        <field name="model">college.timetable</field>
+        <field name="arch" type="xml">
+
+            <form string="Timetable">
+
+                <header>
+
+                    <button name="%(action_college_timetable)d"
+                            string="Activate"
+                            type="action"
+                            invisible="state != 'draft'"/>
+
+                    <field name="state"
+                           widget="statusbar"
+                           statusbar_visible="draft,active,cancel"/>
+
+                </header>
+
+                <sheet>
+
+                    <div class="oe_title">
+
+                        <h1>
+
+                            <field name="subject_id" string="Subject"
+                                   placeholder="Subject Name"
+
+                            />
+
+                        </h1>
+
+                    </div>
+
+                    <group>
+
+                        <group>
+
+                            <field name="teacher_id"/>
+
+                            <field name="department_id"/>
+
+                            <field name="course_id"/>
+
+                            <field name="semester"/>
+
+                            <field name="academic_year"/>
+
+                        </group>
+
+                        <group>
+
+                            <field name="day_of_week"/>
+
+                            <field name="start_time"/>
+
+                            <field name="end_time"/>
+
+                            <field name="room"/>
+
+                        </group>
+
+                    </group>
+
+                    <notebook>
+
+                        <page string="Notes">
+
+                            <field name="note"
+                                   placeholder="Lecture Notes"/>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+                <chatter/>
+
+            </form>
+
+        </field>
+    </record>
+
+
+    <!-- ==========================================
+                    SEARCH VIEW
+    =========================================== -->
+
+    <record id="view_college_timetable_search" model="ir.ui.view">
+        <field name="name">college.timetable.search</field>
+        <field name="model">college.timetable</field>
+        <field name="arch" type="xml">
+
+            <search>
+
+                <field name="subject_id"/>
+
+                <field name="teacher_id"/>
+
+                <field name="course_id"/>
+
+                <field name="department_id"/>
+
+                <field name="semester"/>
+
+                <field name="day_of_week"/>
+
+            </search>
+
+        </field>
+    </record>
+
+
+    <!-- ==========================================
+                    ACTION
+    =========================================== -->
+
+    <record id="action_college_timetable"
+            model="ir.actions.act_window">
+
+        <field name="name">Timetable</field>
+
+        <field name="res_model">college.timetable</field>
+
+        <field name="view_mode">list,form</field>
+
+    </record>
+
+</odoo>

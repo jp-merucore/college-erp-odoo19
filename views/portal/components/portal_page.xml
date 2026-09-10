@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ==========================================================
+         Common Portal Page Wrapper
+    =========================================================== -->
+
+    <template id="portal_page"
+              name="Portal Page">
+
+        <div class="container-fluid">
+
+            <t t-out="0"/>
+
+        </div>
+
+    </template>
+
+</odoo>

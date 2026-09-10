@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="college_attendance_list" model="ir.ui.view">
+        <field name="name">college.attendance.list</field>
+        <field name="model">college.attendance</field>
+        <field name="arch" type="xml">
+
+            <list>
+
+                <field name="attendance_no"/>
+                <field name="attendance_date"/>
+                <field name="student_id"/>
+                <field name="department_id"/>
+                <field name="course_id"/>
+                <field name="status" widget="badge"/>
+
+            </list>
+
+        </field>
+    </record>
+
+    <record id="college_attendance_form" model="ir.ui.view">
+        <field name="name">college.attendance.form</field>
+        <field name="model">college.attendance</field>
+        <field name="arch" type="xml">
+
+            <form>
+
+                <sheet>
+
+                    <group>
+
+                        <group>
+
+                            <field name="attendance_no"
+                                   readonly="1"/>
+
+                            <field name="attendance_date"/>
+
+                            <field name="student_id"/>
+
+                        </group>
+
+                        <group>
+
+                            <field name="department_id"/>
+
+                            <field name="course_id"/>
+
+                            <field name="status"/>
+
+                        </group>
+
+                    </group>
+
+                    <field name="note"/>
+
+                </sheet>
+
+                <chatter/>
+
+            </form>
+
+        </field>
+    </record>
+
+    <record id="action_college_attendance"
+            model="ir.actions.act_window">
+
+        <field name="name">Attendance</field>
+        <field name="res_model">college.attendance</field>
+        <field name="view_mode">list,form</field>
+
+    </record>
+
+</odoo>

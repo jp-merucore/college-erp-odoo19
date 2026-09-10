@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="portal_notices">
+
+        <t t-call="college_erp_ready.college_portal_layout">
+
+            <t t-call="college_erp_ready.portal_page">
+
+                <!-- Page Header -->
+
+                <t t-set="page_title"
+                   t-value="'Notices'"/>
+
+                <t t-set="page_subtitle"
+                   t-value="'Latest College Notices'"/>
+
+                <t t-set="page_icon"
+                   t-value="'fa fa-bullhorn text-primary me-2'"/>
+
+                <t t-set="page_total"
+                   t-value="len(notices)"/>
+
+                <t t-call="college_erp_ready.portal_page_header"/>
+
+                <t t-if="notices">
+
+                    <div class="row">
+
+                        <t t-foreach="notices" t-as="notice">
+
+                            <div class="col-lg-6 mb-4">
+
+                                <div class="card shadow-sm border-0 h-100">
+
+                                    <div class="card-body">
+
+                                        <div class="d-flex justify-content-between">
+
+                                            <h5 class="fw-bold">
+
+                                                <t t-esc="notice.name"/>
+
+                                            </h5>
+
+                                            <span class="badge bg-primary">
+
+                                                <span t-field="notice.notice_date"/>
+
+                                            </span>
+
+                                        </div>
+
+                                        <hr/>
+
+                                        <p class="text-muted">
+
+                                            <t t-esc="notice.description"/>
+
+                                        </p>
+
+                                        <t t-if="notice.attachment">
+
+                                            <a t-att-href="'/my/notice/download/%s' % notice.id"
+                                               class="btn btn-outline-primary btn-sm">
+
+                                                <i class="fa fa-download me-2"/>
+
+                                                Download Attachment
+
+                                            </a>
+
+                                        </t>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </t>
+
+                    </div>
+
+                </t>
+
+                <t t-else="">
+
+                    <div class="alert alert-info">
+
+                        No notices available.
+
+                    </div>
+
+                </t>
+
+            </t>
+
+        </t>
+
+    </template>
+
+</odoo>

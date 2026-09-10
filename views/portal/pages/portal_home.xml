@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template id="portal_my_home_student"
+              inherit_id="portal.portal_my_home"
+              priority="100">
+
+        <xpath expr="//div[contains(@class,'o_portal_my_home')]"
+               position="before">
+
+            <t t-if="student">
+
+                <div class="container mt-4">
+
+                    <div class="card shadow-lg border-0"
+                         style="border-radius:20px;">
+
+                        <div class="card-body">
+
+                            <div class="row align-items-center">
+
+                                <!-- Student Details -->
+
+                                <div class="col-lg-8">
+
+                                    <h2 class="fw-bold text-primary">
+
+                                        🎓 Welcome,
+                                        <t t-out="student.name"/>
+
+                                    </h2>
+
+                                    <hr/>
+
+                                    <p>
+
+                                        <strong>Student Code :</strong>
+
+                                        <t t-out="student.student_code"/>
+
+                                    </p>
+
+                                    <p>
+
+                                        <strong>Department :</strong>
+
+                                        <t t-out="student.department_id.name"/>
+
+                                    </p>
+
+                                    <p>
+
+                                        <strong>Admission Date :</strong>
+
+                                        <span t-field="student.admission_date"/>
+
+                                    </p>
+
+                                    <p>
+
+                                        <strong>Status :</strong>
+
+                                        <span class="badge bg-success">
+
+                                            <t t-out="student.state"/>
+
+                                        </span>
+
+                                    </p>
+
+                                </div>
+
+                                <!-- Student Photo -->
+
+                                <div class="col-lg-4 text-center">
+
+                                    <t t-if="student.image_1920">
+
+                                        <img t-att-src="image_data_uri(student.image_1920)"
+                                             style="width:170px;
+                                                    height:170px;
+                                                    object-fit:cover;
+                                                    border-radius:50%;
+                                                    border:5px solid #0d6efd;"/>
+
+                                    </t>
+
+                                    <t t-else="">
+
+                                        <img src="/college_erp_ready/static/src/img/default_student.png"
+                                             style="width:170px;
+                                                    height:170px;
+                                                    border-radius:50%;
+                                                    border:5px solid #0d6efd;"/>
+
+                                    </t>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </t>
+
+        </xpath>
+
+        <xpath expr="//div[@id='portal_client_category']"
+               position="replace"/>
+
+        <xpath expr="//div[@id='portal_vendor_category']"
+               position="replace"/>
+
+        <xpath expr="//div[@id='portal_common_category']"
+               position="replace">
+
+            <div class="o_portal_category row g-3 mt-3"
+                 id="portal_common_category">
+
+                <!-- Dashboard -->
+
+                <div class="col-md-6">
+
+                    <a href="/my/dashboard"
+                       class="text-decoration-none">
+
+                        <div class="card shadow-sm h-100">
+
+                            <div class="card-body text-center">
+
+                                <i class="fa fa-dashboard fa-3x text-primary mb-3"/>
+
+                                <h5>Dashboard</h5>
+
+                                <p class="text-muted">
+
+                                    Student Dashboard
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+                <!-- My Profile -->
+
+                <div class="col-md-6">
+
+                    <a href="/my/profile"
+                       class="text-decoration-none">
+
+                        <div class="card shadow-sm h-100">
+
+                            <div class="card-body text-center">
+
+                                <i class="fa fa-user fa-3x text-success mb-3"/>
+
+                                <h5>My Profile</h5>
+
+                                <p class="text-muted">
+
+                                    Student Information
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </xpath>
+
+    </template>
+
+</odoo>
