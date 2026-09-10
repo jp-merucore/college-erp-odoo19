@@ -4,9 +4,9 @@
               name="Student Dashboard">
         <t t-call="college_erp_ready.college_portal_layout">
             <div class="container mt-4">
-                <!-- ===================================================== -->
+           
                 <!-- Professional Student Header -->
-                <!-- ===================================================== -->
+
                 <div class="card border-0 shadow-lg mb-5"
                      style="
                             background: linear-gradient(135deg,#2563eb,#1d4ed8);
@@ -14,7 +14,7 @@
                          ">
                     <div class="card-body p-4">
                         <div class="row align-items-center">
-                            <!-- ================= Left ================= -->
+                            <!-- Left-->
                             <div class="col-lg-8">
                                 <h2 class="fw-bold mb-3">
                                     Welcome,
@@ -56,7 +56,7 @@
                                     </t>
                                 </p>
                             </div>
-                            <!-- ================= Right ================= -->
+                            <!--Right -->
                             <div class="col-lg-4 text-center">
                                 <t t-if="student.image_1920">
                                     <img t-att-src="image_data_uri(student.image_1920)"
@@ -84,9 +84,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- ===================== -->
+
                 <!-- Statistics -->
-                <!-- ===================== -->
+            
                 <div class="row g-4">
                     <!-- Courses -->
                     <div class="col-lg-3 col-md-6">
@@ -150,9 +150,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- ===================== -->
+             
                 <!-- Quick Actions -->
-                <!-- ===================== -->
+              
                 <div class="mt-5">
                     <h3 class="fw-bold mb-4">
                         Quick Actions
@@ -255,9 +255,9 @@
                 <div class="row mt-5">
 
                     <div class="col-lg-6">
-                        <!-- ================================= -->
+     
                         <!-- Notice Board -->
-                        <!-- ================================= -->
+         
                         <div class="mt-4">
                             <div class="card border-0 shadow h-100">
                                 <div class="card-header bg-dark text-white">
@@ -329,9 +329,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- ================================= -->
+       
                         <!-- Student Information -->
-                        <!-- ================================= -->
+                  
                         <div class="mt-4">
                             <div class="card border-0 shadow h-100 mt-4">
                                 <div class="card-header bg-secondary text-white">
@@ -406,9 +406,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- ================================= -->
+
                         <!-- Fee Summary -->
-                        <!-- ================================= -->
+                
                         <div class="mt-4">
                             <div class="card border-0 shadow h-100">
                                 <div class="card-header bg-warning">
@@ -481,9 +481,9 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <!-- ========================================== -->
+                
                         <!-- Recent Attendance -->
-                        <!-- ========================================== -->
+ 
                         <div class="mt-4">
                             <div class="card shadow border-0 h-100">
                                 <div class="card-header bg-primary text-white">
@@ -540,9 +540,9 @@
                             </div>
                         </div>
 
-                        <!-- ======================================= -->
+                  
                         <!-- Latest Exam Result -->
-                        <!-- ======================================= -->
+                     
                         <div class="mt-4">
                             <div class="card border-0 shadow h-100">
                                 <div class="card-header bg-success text-white">
@@ -621,9 +621,9 @@
                             </div>
                         </div>
 
-                        <!-- ================================= -->
+            
                         <!-- Upcoming Exams -->
-                        <!-- ================================= -->
+                   
                         <div class="mt-4">
                             <div class="card shadow border-0">
 
