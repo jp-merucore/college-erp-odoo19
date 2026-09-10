@@ -338,10 +338,9 @@ class CollegePortal(CustomerPortal):
             order='id desc',
             limit=1
         )
-
-        # ===========================
+        
         # Fee Summary
-        # ===========================
+        
 
         fees = request.env[
             'college.fee'
@@ -364,9 +363,8 @@ class CollegePortal(CustomerPortal):
             if total_fee else 0
         )
 
-        # ===========================
+        
         # Upcoming Exams
-        # ===========================
 
         today = fields.Date.today()
 
@@ -381,9 +379,9 @@ class CollegePortal(CustomerPortal):
             order='exam_date asc',
             limit=5,
         )
-        # ===========================
+        
         # Notices
-        # ===========================
+    
 
         today = fields.Date.today()
 
@@ -527,9 +525,8 @@ class CollegePortal(CustomerPortal):
 
         courses = student.course_ids
 
-        # ===========================
         # Statistics
-        # ===========================
+       
 
         total_courses = len(courses)
 
