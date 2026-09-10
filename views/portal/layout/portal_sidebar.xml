@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- ==========================================================
+    <!-- 
          College ERP - Portal Sidebar
-    =========================================================== -->
+    -->
 
     <template id="portal_sidebar"
               name="Portal Sidebar">
 
         <aside class="college_sidebar">
 
-            <!-- ===============================
+            <!-- 
                     Logo
-            ================================ -->
+            -->
 
             <div class="college_sidebar_logo">
 
@@ -29,9 +29,9 @@
 
             </div>
 
-            <!-- ===============================
+            <!-- 
                     Menu
-            ================================ -->
+             -->
 
             <ul class="college_sidebar_menu">
 
@@ -135,9 +135,9 @@
 
             </ul>
 
-            <!-- ===============================
+            <!-- 
                     Footer
-            ================================ -->
+            -->
 
             <div class="college_sidebar_footer">
 
